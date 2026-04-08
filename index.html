@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario | ZenFinance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #0b0f0b;
+            --surface-color: #1a221a;
+            --primary: #2d5a27;
+            --secondary: #4ade80;
+            --accent: #fbbf24;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(26, 34, 26, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --sidebar-width: 300px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--surface-color);
+            border-right: 1px solid var(--glass-border);
+            position: fixed;
+            padding: 40px 24px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .nav-group {
+            margin-bottom: 32px;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--secondary);
+        }
+
+        /* Main Content */
+        main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 80px 10%;
+            max-width: 1200px;
+        }
+
+        .hero {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 100px;
+            padding-top: 40px;
+        }
+
+        .section-tag {
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--secondary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .feature-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 20px;
+        }
+
+        .feature-box i {
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+
+        .feature-box h4 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .feature-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+            nav {
+                display: none;
+            }
+            main {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Highlight box for alerts */
+        .info-box {
+            border-left: 4px solid var(--accent);
+            background: rgba(251, 191, 36, 0.05);
+            padding: 20px;
+            border-radius: 0 16px 16px 0;
+            margin: 24px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <div style="width: 40px; height: 40px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                <i data-lucide="rocket" color="#4ade80"></i>
+            </div>
+            <span class="logo-text">ZenFinance</span>
+        </a>
+
+        <div class="nav-group">
+            <span class="nav-label">Fundamentos</span>
+            <a href="#inicio" class="nav-link"><i data-lucide="layout-dashboard" size="18"></i> Inicio</a>
+            <a href="#cuentas" class="nav-link"><i data-lucide="wallet" size="18"></i> Gestión de Cuentas</a>
+            <a href="#transacciones" class="nav-link"><i data-lucide="repeat" size="18"></i> Transacciones</a>
+        </div>
+
+        <div class="nav-group">
+            <span class="nav-label">Análisis Avanzado</span>
+            <a href="#proyeccion" class="nav-link"><i data-lucide="calendar" size="18"></i> Proyección de Pagos</a>
+            <a href="#deudas" class="nav-link"><i data-lucide="trending-down" size="18"></i> Estrategia ZenPlan</a>
+        </div>
+
+        <div class="nav-group">
+            <span class="nav-label">Seguridad y Datos</span>
+            <a href="#seguridad" class="nav-link"><i data-lucide="shield" size="18"></i> Seguridad (PIN)</a>
+            <a href="#backups" class="nav-link"><i data-lucide="database" size="18"></i> Copias de Seguridad</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <h1>Manual de Usuario</h1>
+            <p>Descubre cómo dominar tus finanzas personales aplicando la simetría y lógica de ZenFinance.</p>
+        </div>
+
+        <!-- Section 1: Panel Principal -->
+        <section id="inicio">
+            <span class="section-tag">CONTROL TOTAL</span>
+            <h2>Panel Principal (Dashboard)</h2>
+            <div class="card">
+                <p>El panel principal es el centro neurálgico de tu estrategia financiera. Aquí puedes visualizar el estado de salud de tu dinero de forma instantánea.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h4>Gráficos Dinámicos</h4>
+                        <p>Analiza el comportamiento de tus ingresos vs gastos mediante gráficos de área interactivos.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="calendar-range"></i>
+                        <h4>Selector de Período</h4>
+                        <p>Filtra toda tu información por día, semana, mes o año para una visión granular.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="circle-dollar-sign"></i>
+                        <h4>Balance Total Consolidado</h4>
+                        <p>Visualiza el total de todas tus cuentas convertido automáticamente a tu moneda principal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Gestión de Cuentas -->
+        <section id="cuentas">
+            <span class="section-tag">ORGANIZACIÓN</span>
+            <h2>Gestión de Cuentas</h2>
+            <div class="card">
+                <p>ZenFinance te permite manejar múltiples cuentas bancarias, billeteras digitales y efectivo en un solo lugar.</p>
+                
+                <div class="info-box">
+                    <strong>Tip Profesional:</strong> Puedes configurar qué cuentas deben sumarse al balance total y cuáles mantener por separado (ideal para ahorros intocables).
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <i data-lucide="globe"></i>
+                        <h4>Soporte Multimoneda</h4>
+                        <p>Cada cuenta puede tener su propia moneda. La app se encarga de convertir los valores en tiempo real usando tasas actualizadas.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="edit-3"></i>
+                        <h4>Edición Precisa</h4>
+                        <p>Ajusta el saldo inicial y el nombre de tus cuentas en cualquier momento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Proyección de Pagos -->
+        <section id="proyeccion">
+            <span class="section-tag">PROACTIVIDAD</span>
+            <h2>Proyección de Pagos</h2>
+            <div class="card">
+                <p>No esperes a que lleguen las facturas. Registra tus gastos recurrentes y ZenFinance te dirá exactamente cuánto dinero necesitas para el resto del mes.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <i data-lucide="bell"></i>
+                        <h4>Alertas Automáticas</h4>
+                        <p>Recibe notificaciones diarias a las 8:00 AM sobre los pagos que vencen en el día.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="file-check"></i>
+                        <h4>Reporte PDF Profesional</h4>
+                        <p>Exporta tu proyección de pagos en un documento PDF diseñado para impresión o análisis profundo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Estrategia de Deudas -->
+        <section id="deudas">
+            <span class="section-tag">LIBERTAD</span>
+            <h2>Estrategia ZenPlan</h2>
+            <div class="card">
+                <p>Utiliza herramientas de nivel bancario para salir de deudas más rápido. Nuestro algoritmo calcula la meta exacta de libertad financiera.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <i data-lucide="snowflurry"></i>
+                        <h4>Método Bola de Nieve</h4>
+                        <p>Prioriza las deudas más pequeñas para generar victorias psicológicas rápidas.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="zap"></i>
+                        <h4>Método Avalancha</h4>
+                        <p>Ataca las tasas de interés más altas para ahorrar la mayor cantidad de dinero posible.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="award"></i>
+                        <h4>Plan de Acción PDF</h4>
+                        <p>Obtén un manual paso a paso sobre qué pagar y cuándo, generado profesionalmente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Seguridad y Datos -->
+        <section id="seguridad">
+            <span class="section-tag">PRIVACIDAD</span>
+            <h2>Seguridad y Respaldos</h2>
+            <div class="card">
+                <p>Tus datos financieros son sagrados. ZenFinance implementa capas de seguridad para que solo tú tengas acceso.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <i data-lucide="fingerprint"></i>
+                        <h4>PIN y Biometría</h4>
+                        <p>Protege el acceso a la app con un PIN de 4 dígitos o mediante la huella dactilar/FaceID de tu teléfono.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="cloud-off"></i>
+                        <h4>Privacidad Total</h4>
+                        <p>Toda tu información se guarda localmente en el dispositivo. Nada se sube a la nube sin tu permiso.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i data-lucide="database"></i>
+                        <h4>Copia de Seguridad (JSON)</h4>
+                        <p>Exporta toda tu información en un archivo cifrado que puedes compartir a tu Drive o WhatsApp para restaurar en otro dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>&copy; 2024 ZenFinance. Todos los derechos reservados.</p>
+            <p>ZenFinance MU - Documentación Profesional Serie 1.0</p>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
